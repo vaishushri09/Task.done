@@ -1,0 +1,89 @@
+{% extends 'todo_app/base2.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- ======= Header ======= -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Task<span>.</span>done</h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#call">Demo</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+  
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+    <div class="container position-relative">
+      <div class="row gy-5" data-aos="fade-in">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+          <h2>Welcome to Task<span>.</span>done</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="/register" class="btn-get-started">Get Started</a>
+            </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2">
+          <img src="{% static 'assets/img/hero-img.svg' %}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+  <!-- End Hero Section -->
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>Objective of Task.Done</h2>
+        <p style="font-weight: bolder; color: #636564;">This platform enables teams to create project rooms, facilitating task assignment and leveraging OpenAI for task summarization and step-by-step guidance.</p>
+      </div>
+
+      <div class="row gy-4">
+        <h3>What does Task.Done do?</h3>
+        <div class="col-lg-6" style="width: 100%; color: #198754;">
+          <p style="font-size: larger;">This platform is like a helper for teams doing projects together. It lets them make special rooms for their projects where they can give out tasks and keep things organized. The cool part is it works with OpenAI, which helps by giving short summaries of tasks and telling the team what to do step by step. This makes it easier for everyone to work together and finish their tasks on time.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <main id="main">
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call" class="call-to-action">
+      <div class="container text-center" data-aos="zoom-out">
+        <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+        <h3>Demo</h3>
+        <p>Watch the video for a comprehensive demo showcasing the features and functionality in action.</p>
+        <a class="cta-btn" href="#">Get started</a>
+      </div>
+    </section><!-- End Call To Action Section -->
+
+  
+
+
+
+    
+
+  </main><!-- End #main -->
+
+ {% endblock %}

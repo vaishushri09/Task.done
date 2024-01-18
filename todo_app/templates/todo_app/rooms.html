@@ -1,0 +1,32 @@
+{% extends 'todo_app/base2.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+    
+ <!-- ======= Our Team Section ======= -->
+ <section id="team" class="team">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>Rooms</h2>
+      </div>
+
+      <div class="row gy-4">
+        {% for room in rooms %}
+        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+          <div class="member">
+            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+            <h4><a href="{% url 'room_detail' room.id %}">{{ room.name }}</a></h4>
+          </div>
+        </div><!-- End Team Member -->
+        {% endfor %}
+      </div>
+      <button class="btn-get-started"><a href="{% url 'create_room' %}">Create Room</a></button>
+    </div>
+  </section><!-- End Our Team Section -->
+ {% endblock %}
+ 

@@ -1,0 +1,37 @@
+{% extends 'todo_app/base2.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<section id="team" class="team">
+    <div class="container" data-aos="fade-up"
+        style="background-color: white; padding: 20px; box-shadow: 0 0 20px rgb(126 126 126 / 87%); border-radius: 20px; border: 5px solid rgb(18, 138, 124);">
+
+        <div class="section-header">
+            <h2>Login</h2>
+        </div>
+        {% if error_message %}
+        <p class="text-danger">{{ error_message }}</p>
+        {% endif %}
+        <div class="row gy-4">
+            <form method="post" style="    display: flex;
+            flex-direction: column;">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn-get-started" style="width: 40%; margin: auto; background-color: rgb(18, 138, 124); color: white; border-color: rgb(7, 101, 88);" >Login</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

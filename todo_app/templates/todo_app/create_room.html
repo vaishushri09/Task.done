@@ -1,0 +1,32 @@
+{% extends 'todo_app/base2.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up" style="background-color: white; padding: 20px; box-shadow: 0 0 20px rgb(126 126 126 / 87%); border-radius: 20px; border: 5px solid rgb(18, 138, 124);">
+
+      <div class="section-header">
+        <h2>Create Room</h2>
+      </div>
+
+      <div class="row gx-lg-0 gy-4" style="display: flex;
+      align-items: center;
+      justify-content: center;
+      ">
+        <div class="col-lg-8" style="margin: auto; width: fit-content;">
+            <form method="post" action="{% url 'create_room' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn-get-started">Create Room</button>
+            </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+{% endblock %}

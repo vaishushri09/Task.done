@@ -1,0 +1,28 @@
+{% extends 'todo_app/base2.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>OpenAI Response</h2>
+      </div>
+
+      <div class="row">
+        <div class="col">
+            {% if openai_response %}
+            <pre>{{ openai_response }}</pre>
+            {% else %}
+            <p>No OpenAI response available.</p>
+            {% endif %}
+        </div>
+      </div>
+      <button class="btn-get-started"><a href="{% url 'todo_list' %}">Back</a></button>
+    </div>
+  </section>
+{% endblock %}

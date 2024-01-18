@@ -1,0 +1,166 @@
+{% extends 'todo_app/base2.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+<header id="header" class="header d-flex align-items-center">
+
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a href="" class="logo d-flex align-items-center">
+      <!-- Uncomment the line below if you also wish to use an image logo -->
+      <!-- <img src="assets/img/logo.png" alt=""> -->
+      <h1>Task<span>.</span>done</h1>
+    </a>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a href="/ ">Back</a></li>
+      </ul>
+    </nav><!-- .navbar -->
+
+    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+  </div>
+</header>
+<div class="container " style="width: 100%; margin-top: 10%;">
+  <div class="row">
+     <div class="col-md-6" style="background-color: aliceblue;
+
+     height: fit-content;
+     color: #04786b;
+     border-radius: 20px;
+    border: 2px solid;
+    width: 100%;
+    border-color: cadetblue;
+     padding: 20px;
+     display: flex;
+     flex-direction: column;
+ ">
+      <!-- User Profile and Greeting -->
+      <div class="profile" style="margin: 0 30%;" >
+        <h2 class="profile__title">Welcome,
+          <span id="username" class="profile__username"></span>
+        </h2>
+      </div>
+      <!-- Add Task Form -->
+      <div class="col-md-6" style="margin: 0 30%;">
+        <h2> Room: {{ room.name }}</h2>
+      </div>
+    </div>
+    <div class="col-md-6" style="width: 100%;margin: 20px 0; color: #04786b;">
+      <h1>Tasks</h1>
+      
+      <ul class="list-group">
+        {% for task in tasks %}
+        <li class="list-group-item">
+          {{ task.title }} - {{ task.description }} {% if task.completed %}(Completed){% endif %}
+          {% if task.time_of_completion %}
+          <br>
+          <small class="text-muted">Time of Completion: {{ task.time_of_completion }}</small>
+          {% endif %}
+          {% if not task.completed %}
+          <a href="{% url 'edit_task' task.id %}" class="btn btn-sm btn-info">Edit</a>
+          <form action="{% url 'delete_task' task.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+          {% endif %}
+          <form action="{% url 'mark_task_completed' task.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            {% if task.completed %}
+            <button type="submit" class="btn btn-sm btn-warning">Incomplete</button>
+            {% else %}
+            <button type="submit" class="btn btn-sm btn-success">Done</button>
+            {% endif %}
+          </form>
+          {% if task.time_of_completion and not task.completed %}
+          <br>
+          <small class="text-muted">Time Remaining: {{ task.time_of_completion|timeuntil }}</small>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="add-form mt-3">
+        <a href="/add_task"><button class="btn-get-started" type="submit" href="{% url 'add_task' %}">Add
+            Task</button></a>
+        <form action="{% url 'add_task' %}" method="POST" class="d-inline">
+          {% csrf_token %}
+          <!-- <input type="text" name="title" placeholder="Title" required>
+                  <button type="submit" href="{% url 'add_task' %}">Add Task</button> -->
+        </form>
+      </div>
+      
+    </div>
+   
+  </div>
+
+  <!-- OpenAI Form -->
+  <form method="post" action="{% url 'generate_openai_response' %}">
+    {% csrf_token %}
+    <label for="id_prompt">Enter your prompt:</label>
+    <textarea id="id_prompt" name="prompt" rows="4" cols="50" required class="form-control"></textarea>
+    <br>
+    <button name="openai_form_submit" type="submit" class="btn-get-started">Generate OpenAI Response</button>
+  </form>
+
+  {% if openai_response %}
+  <h3>OpenAI Response:</h3>
+  <p>{{ openai_response }}</p>
+  {% endif %}
+
+  
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- JavaScript code here (profile greeting) -->
+<script>
+  // JavaScript code here (profile greeting)
+  const usernameElement = document.getElementById('username');
+  const greetingElement = document.getElementById('greeting');
+  const username = '{{ request.user.username }}';
+  const greetings = [
+    'How was your day?',
+    'Welcome to our platform!',
+    'Enjoy your stay!',
+  ];
+  const delay = 100;
+  const repeatCount = 2;
+
+  function typeWriter(element, text, delay) {
+    let charIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (charIndex < text.length) {
+        element.innerHTML += text.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, delay);
+  }
+
+  function repeatTyping(element, lines, delay, repeatCount) {
+    let repeatIndex = 0;
+    const repeatInterval = setInterval(() => {
+      if (repeatIndex < repeatCount) {
+        lines.forEach((line) => {
+          setTimeout(() => {
+            element.innerHTML = '';
+            typeWriter(element, line, delay);
+          }, repeatIndex * lines.length * delay * lines[0].length);
+        });
+        repeatIndex++;
+      } else {
+        clearInterval(repeatInterval);
+      }
+    }, repeatCount * lines.length * delay * line[0].length);
+  }
+
+  typeWriter(usernameElement, username, delay);
+  setTimeout(() => {
+    repeatTyping(greetingElement, greetings, delay, repeatCount);
+  }, 1500);
+</script>
+
+{% endblock %}
