@@ -8,7 +8,7 @@ Task.Done is a collaborative project management tool that empowers teams to stre
 - **OpenAI Integration:** Receive AI-generated task summaries and step-by-step guidance for effective project completion.
 
 ## Demo Video:
-📽️ Check out our [Demo Video](<insert_demo_video_link_here>) to see Task.Done in action!
+📽️ Check out our [Demo Video](<https://www.canva.com/design/DAF6D0-ZWeQ/EAPw7wjs_LJY1qWfckNBmA/watch?utm_content=DAF6D0-ZWeQ&utm_campaign=designshare&utm_medium=link&utm_source=editor>) to see Task.Done in action!
 
 ## Technology Used:
 - Django: Web framework used to build the application.
