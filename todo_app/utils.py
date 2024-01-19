@@ -2,7 +2,7 @@
 import openai
 
 def generate_openai_response(input):
-    openai.api_key = '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'
+    openai.api_key = ''
     prompt = f"Generate steps for completing the input task {input}, complete it in 200 words:"
     response = openai.Completion.create(
         engine="gpt-3.5-turbo-instruct",  # Replace with the correct engine name
