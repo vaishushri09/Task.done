@@ -12,7 +12,7 @@ Task.Done is a collaborative project management tool that empowers teams to stre
 
 ## Technology Used:
 - Django: Web framework used to build the application.
-- HTML/CSS: Frontend markup and styling.
+- HTML/CSS/JAVASCRIPT: Frontend markup and styling.
 - SQLite: Database for storing user information and platform data.
 - OpenAI GPT-3: Integration with ChatGPT for AI-powered interview questions.
 
