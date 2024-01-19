@@ -24,8 +24,9 @@ To run this project locally, follow these steps:
 1. Clone the repository: `git clone <repository-url>`
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Set up the database: `python manage.py migrate`
-4. Start the development server: `python manage.py runserver`
-5. Access the application in your browser at [http://localhost:8000](http://localhost:8000)
+4. Set up the OpenAI API: Obtain an API key and update the `OPENAI_API_KEY` setting in the `settings.py` file.
+5. Start the development server: `python manage.py runserver`
+6. Access the application in your browser at [http://localhost:8000](http://localhost:8000)
 
 ## ⚙️ Configuration
 
